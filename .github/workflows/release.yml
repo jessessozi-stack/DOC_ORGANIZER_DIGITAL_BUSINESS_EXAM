@@ -3,7 +3,7 @@ name: Release Statically Linked Rust Binary
 
 on:
   push:
-    tags:
+    branches: [ main ]
       - 'v*'  # Trigger on tags like 'v1.0.0'
 
 jobs:
@@ -56,5 +56,5 @@ jobs:
             *.tar.gz
             *.zip
         env:
-          GITHUB_TOKEN: ${{ secrets.COMMR }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
