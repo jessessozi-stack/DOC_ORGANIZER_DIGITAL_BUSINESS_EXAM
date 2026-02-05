@@ -1,12 +1,10 @@
+on:
+  push:
+   branches: [ main ]
+
 
 name: Release Statically Linked Rust Binary
 
-on:
-  push:
-    branches: [ main ]
-      - 'v*'  # Trigger on tags like 'v1.0.0'
-
-jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
