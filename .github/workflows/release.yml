@@ -16,11 +16,15 @@ jobs:
       - name: Build with Cross
         run: cross build --release --target aarch64-unknown-linux-musl
 
-      - name: Create Release Archive
-        run: |
-          cd target/aarch64-unknown-linux-musl/release
-          tar -czf release-aarch64.tar.gz
+       - name: Create Release Archive
 
+         run: |
+
+           mkdir -p dist
+
+           cp -r target/*/release/* dist/
+
+           tar -czf release-aarch64.tar.gz dist
       - name: Upload Release Artifact
         uses: actions/upload-artifact@v4
         with:
