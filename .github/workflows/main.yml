@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build with Cross
+      - name: Build with cross
         uses: cross-rs/cross@v0.2.5
         with:
           command: build
