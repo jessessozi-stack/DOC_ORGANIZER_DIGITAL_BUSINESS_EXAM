@@ -1,5 +1,5 @@
 
-name: Release Statically Linked Rust Binary
+name: Release 
 
 on:
   push:
