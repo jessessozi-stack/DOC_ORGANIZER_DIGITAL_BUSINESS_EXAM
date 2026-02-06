@@ -1,0 +1,30 @@
+name: Release Staticcally Linked Rust Binary
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build with Cross
+        uses: docker://ghcr.io/cross-rs/aarch64-unknown-linux-musl:latest
+        with:
+          args: cargo build --release --target aarch64-unknown-linux-musl
+
+      - name: Create Release Archive
+        run: |
+          mkdir dist
+          cp target/aarch64-unknown-linux-musl/release/* dist/
+
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
