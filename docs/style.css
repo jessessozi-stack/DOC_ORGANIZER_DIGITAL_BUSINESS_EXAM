@@ -1,0 +1,54 @@
+:root {
+    --accent: #FF5722;
+    --black: #000000;
+    --white: #ffffff;
+}
+[data-theme="green"] { --accent: #00473e; }
+[data-theme="blue"] { --accent: #0055ff; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--black);
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    overflow-x: hidden;
+    transition: background-color 1.5s ease;
+}
+
+body.light-mode { background-color: var(--white); color: var(--black); }
+
+.grain-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.05; pointer-events: none; z-index: 5;
+}
+
+#canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+
+.ui-layer {
+    position: relative; z-index: 10;
+    min-height: 100vh; display: flex; flex-direction: column;
+    justify-content: space-between; padding: 60px;
+    pointer-events: none;
+}
+.ui-layer * { pointer-events: auto; }
+
+/* Point 1: Raise Search Bar higher */
+.search-container { text-align: center; margin-top: 20vh; } 
+.search-v3 { border-bottom: 2px solid var(--accent); width: 450px; margin: 0 auto 20px; }
+.search-v3 input { background: transparent; border: none; color: inherit; font-size: 1.2rem; text-align: center; width: 100%; outline: none; text-transform: uppercase; }
+
+.upload-zone { font-size: 0.6rem; opacity: 0.4; border: 1px dashed rgba(128,128,128,0.3); padding: 10px; width: fit-content; margin: 0 auto; cursor: pointer; }
+
+/* Lower Footer Blocks to clear the orbit path */
+.lab-details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 200px; padding-bottom: 20px; }
+.detail-block { padding: 30px; border: 1px solid rgba(128,128,128,0.2); backdrop-filter: blur(5px); }
+.accent-border { border-color: var(--accent); }
+.price { font-size: 3rem; color: var(--accent); font-weight: 800; }
+
+.download-dropdown { position: relative; margin-top: 15px; }
+.drop-btn { background: var(--accent); color: white; border: none; padding: 12px; width: 100%; font-family: 'Syne'; font-weight: 800; cursor: pointer; }
+.drop-content { display: none; position: absolute; background: #111; min-width: 100%; border: 1px solid var(--accent); bottom: 100%; }
+.drop-content a { color: white; padding: 12px; text-decoration: none; display: block; font-size: 0.7rem; }
+.download-dropdown:hover .drop-content { display: block; }

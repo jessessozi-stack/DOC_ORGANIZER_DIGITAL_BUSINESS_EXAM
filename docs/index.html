@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOC-VAULT | VOXEL_LAB_FINAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body class="noir-theme" data-theme="default">
+    <div class="grain-overlay"></div>
+    <div id="canvas-container"></div>
+
+    <div class="theme-controls">
+        <button onclick="setTheme('default')">DEFAULT</button>
+        <button onclick="setTheme('green')">ISLE_OF_MAN</button>
+        <button onclick="setTheme('blue')">DEEP_ATLANTIC</button>
+    </div>
+
+    <main class="ui-layer">
+        <nav><div class="logo">LAB<span class="accent-text">.001</span></div></nav>
+
+        <section class="hero">
+            <div class="search-container">
+                <div class="search-v3">
+                    <input type="text" id="searchInput" placeholder="INITIATE_SORT" autocomplete="off">
+                </div>
+                <div class="upload-zone" id="dropZone">
+                    <span id="uploadStatus">DRAG_DROP_FILES (MAX 25 // 500KB PER)</span>
+                    <input type="file" id="fileInput" multiple hidden>
+                </div>
+            </div>
+        </section>
+
+        <section class="lab-details">
+            <div class="detail-block">
+                <h3>THE_AIM</h3>
+                <p>To eliminate digital friction. We transform chaotic document stacks into queryable knowledge vaults.</p>
+            </div>
+            <div class="detail-block">
+                <h3>ASPIRATIONS</h3>
+                <p>Roadmap 2026: Local-first neural search and cross-platform ARM optimization.</p>
+            </div>
+            <div class="detail-block accent-border">
+                <h3>LIFETIME_SUPPORT</h3>
+                <div class="price">€3.00</div>
+                <div class="download-dropdown">
+                    <button class="drop-btn">GET_BINARIES ↓</button>
+                    <div class="drop-content">
+                        <a href="#">WINDOWS_X64</a>
+                        <a href="#">MACOS_AARCH64</a>
+                        <a href="#">LINUX_ARM64</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
