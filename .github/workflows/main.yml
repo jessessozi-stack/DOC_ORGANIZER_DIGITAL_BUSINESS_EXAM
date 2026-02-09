@@ -36,5 +36,6 @@ jobs:
       with:
         name: ${{ matrix.artifact_name }}
         path: |
-          target/${{ matrix.target }}/release/DOC_ORGANIZER*
+          target/${{ matrix.target }}/release/doc*
+          target/${{ matrix.target }}/release/DOC*
           target/${{ matrix.target }}/release/*.exe
