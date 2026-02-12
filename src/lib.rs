@@ -1,3 +1,4 @@
+use infer;
 use std::fs;
 use std::io;
 use std::path::{Path, PathBuf};
@@ -68,8 +69,22 @@ fn process_file(base_path: &Path, file_path: &PathBuf, dry_run: bool) -> io::Res
     Ok(())
 }
 
-/// Determine the category folder based on file extension
+/// Determine the category folder based on binary content (Magic Bytes)
+/// and falls back to the file extension if content is unknown.
 fn categorize_file(path: &Path) -> &'static str {
+    // 1. Try to identify the file by its internal binary signature
+    if let Ok(Some(kind)) = infer::get_from_path(path){
+        return match kind.extension() {
+            "pdf" => "PDFs",
+            "docx" | "doc" => "Documents",
+            "pptx" | "ppt" => "Presentations",
+            "jpg" | "png" | "jpeg" => "Images", 
+            "zip" | "tar" | "gz" | "rar" => "Archives",
+            _ => "Other",
+        };
+    }
+    
+    // 2. Fallback: If binary check fails (e.g., file is empty), check the extension
     match path.extension().and_then(|ext| ext.to_str()) {
         Some("pdf") => "PDFs",
         Some("docx") | Some("doc") => "Documents",
